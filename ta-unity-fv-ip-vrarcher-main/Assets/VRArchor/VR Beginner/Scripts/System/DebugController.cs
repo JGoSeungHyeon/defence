@@ -43,6 +43,7 @@ public class DebugController : MonoBehaviour
         if (Input.GetMouseButton(1) && anchor != null)
         {//if the right button is pressed 
             RigTransform.transform.position = anchor.transform.position;
+            UpdateLookRotation();
         }
         else
         {

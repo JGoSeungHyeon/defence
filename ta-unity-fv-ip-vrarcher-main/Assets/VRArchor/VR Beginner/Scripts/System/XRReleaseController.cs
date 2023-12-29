@@ -54,6 +54,7 @@ public class XRReleaseController : XRController
         {
             if (m_Active)
             {
+                
                 m_SelectionStateDectivatedThisFrameInfo.SetValue(o, true);
                 m_SelectionStateActiveInfo.SetValue(o, false);
                 m_Active = false;

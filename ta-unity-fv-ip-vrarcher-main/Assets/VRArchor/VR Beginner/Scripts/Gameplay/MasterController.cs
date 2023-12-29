@@ -145,6 +145,7 @@ public class MasterController : MonoBehaviour
 
     void RightTeleportUpdate()
     {
+        
         Vector2 axisInput;
         m_RightInputDevice.TryGetFeatureValue(CommonUsages.primary2DAxis, out axisInput);
         
@@ -152,9 +153,14 @@ public class MasterController : MonoBehaviour
         
         RightTeleportInteractor.InteractionLayerMask = m_LastFrameRightEnable ? m_OriginalRightMask : new LayerMask();
         
-        if (axisInput.y <= 0.5f && m_PreviousRightClicked)
+        if (axisInput.y <= 0.5f && m_PreviousRightClicked)//RightStick
         {
+            GameManager.instance.playerStatus = PlayerStatus.Idle;
             m_RightController.Select();
+        }
+        else if(axisInput.y >= 0.5f)
+        {
+            GameManager.instance.playerStatus = PlayerStatus.Teleport;
         }
 
         

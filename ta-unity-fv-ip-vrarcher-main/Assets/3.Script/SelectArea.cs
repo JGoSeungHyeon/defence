@@ -28,6 +28,7 @@ public class SelectArea : MonoBehaviour
         }
         else if (state == Status.Outline)
         {
+            outline.OutlineColor = Color.green;
             outline.enabled = true;
         }
         else if (state == Status.Select)
@@ -35,4 +36,17 @@ public class SelectArea : MonoBehaviour
             outline.OutlineColor = Color.red;
         }
     }
+    public void SetStatusNone()
+    {
+        state = Status.None;
+    }
+    public void SetStatusOutline()
+    {
+        state = Status.Outline;
+    }
+    public void SetStatusSelect()
+    {
+        state = Status.Select;
+    }
+
 }
