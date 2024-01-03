@@ -109,7 +109,7 @@ public class MasterController : MonoBehaviour
 
         InputDevices.GetDevicesWithCharacteristics(rightTrackedControllerFilter, foundControllers);
 
-        if (foundControllers.Count > 0)
+        if (foundControllers.Count > 0)  
             m_RightInputDevice = foundControllers[0];
 
         if (m_Rig.TrackingOriginMode != TrackingOriginModeFlags.Floor)
@@ -124,10 +124,12 @@ public class MasterController : MonoBehaviour
             {
                 if ((connectedDevice.characteristics & InputDeviceCharacteristics.Left) == InputDeviceCharacteristics.Left)
                 {
+                    Debug.Log("왼쪽 눌림!");
                     m_LeftInputDevice = connectedDevice;
                 }
                 else if ((connectedDevice.characteristics & InputDeviceCharacteristics.Right) == InputDeviceCharacteristics.Right)
                 {
+                    Debug.Log("오른쪽 눌림!");
                     m_RightInputDevice = connectedDevice;
                 }
             }

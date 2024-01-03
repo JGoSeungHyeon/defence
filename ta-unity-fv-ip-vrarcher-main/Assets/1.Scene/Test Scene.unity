@@ -6479,7 +6479,7 @@ MonoBehaviour:
   m_TurnUsage: 0
   m_Controllers:
   - {fileID: 1837324665487966498}
-  - {fileID: 1837324664321167623}
+  - {fileID: 0}
   m_TurnAmount: 45
   m_DebounceTime: 0.5
   m_DeadZone: 0.8
@@ -24487,7 +24487,7 @@ MonoBehaviour:
   m_ControllerNode: 4
   m_SelectUsage: 3
   m_ActivateUsage: 3
-  m_UIPressUsage: 0
+  m_UIPressUsage: 8
   m_AxisToPressThreshold: 0.1
   m_ModelPrefab: {fileID: 7469586821250771240, guid: 22a9677ad50f74743a866f273d93223f,
     type: 3}
@@ -24589,6 +24589,7 @@ GameObject:
   - component: {fileID: 1837324664321167623}
   - component: {fileID: 1837324664321167627}
   - component: {fileID: 1837324664321167626}
+  - component: {fileID: 1837324664321167632}
   m_Layer: 9
   m_Name: LeftHand Controller
   m_TagString: Untagged
@@ -24596,6 +24597,21 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &1837324664321167632
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1837324664321167629}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 76c392e42b5098c458856cdf6ecaaaa1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_FirstSelected: {fileID: 0}
+  m_sendNavigationEvents: 1
+  m_DragThreshold: 10
 --- !u!114 &1837324664547058475
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -24614,7 +24630,7 @@ MonoBehaviour:
   RightTeleportInteractor: {fileID: 3487965465590589823}
   LeftTeleportInteractor: {fileID: 0}
   RightDirectInteractor: {fileID: 1837324665487966502}
-  LeftDirectInteractor: {fileID: 1837324664321167627}
+  LeftDirectInteractor: {fileID: 0}
   RightTractorBeam: {fileID: 0}
   LeftTractorBeam: {fileID: 0}
 --- !u!4 &1837324664547058476
