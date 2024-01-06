@@ -124,12 +124,10 @@ public class MasterController : MonoBehaviour
             {
                 if ((connectedDevice.characteristics & InputDeviceCharacteristics.Left) == InputDeviceCharacteristics.Left)
                 {
-                    Debug.Log("왼쪽 눌림!");
                     m_LeftInputDevice = connectedDevice;
                 }
                 else if ((connectedDevice.characteristics & InputDeviceCharacteristics.Right) == InputDeviceCharacteristics.Right)
                 {
-                    Debug.Log("오른쪽 눌림!");
                     m_RightInputDevice = connectedDevice;
                 }
             }
@@ -157,8 +155,8 @@ public class MasterController : MonoBehaviour
         
         if (axisInput.y <= 0.5f && m_PreviousRightClicked)//RightStick
         {
-            GameManager.instance.playerStatus = PlayerStatus.Idle;
             m_RightController.Select();
+            //GameManager.instance.playerStatus = PlayerStatus.Idle;
         }
         else if(axisInput.y >= 0.5f)
         {

@@ -30,6 +30,25 @@ public class GameManager : MonoBehaviour
             Destroy(gameObject);
         }
     }
+    private void Update()
+    {
+        if(playerStatus == PlayerStatus.Search && !RightSelect.activeSelf)
+        {
+            RightTeleport.SetActive(false);
+            RightSelect.SetActive(true);
+        }
+        if(playerStatus == PlayerStatus.Teleport && !RightTeleport.activeSelf)
+        {
+            RightTeleport.SetActive(true);
+            RightSelect.SetActive(false);
+        }
+        if (playerStatus == PlayerStatus.Idle)
+        {
+            RightTeleport.SetActive(false);
+            RightSelect.SetActive(false);
+        }
+
+    }
     public void SetBattle(bool Set)
     {
 

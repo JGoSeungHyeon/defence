@@ -1,12 +1,10 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.XR.Interaction.Toolkit;
 
 
 public class Lefthand : MonoBehaviour
 {
-    internal struct InteractionState
+    struct InteractionState
     {
         /// <summary>This field is true if it is is currently on.</summary>
         public bool active;
@@ -15,8 +13,10 @@ public class Lefthand : MonoBehaviour
         /// <summary>This field is true if the interaction state was de-activated this frame.</summary>
         public bool deActivatedThisFrame;
     }
-    InteractionState m_UIPressInteractionState;
+    InteractionState m_UIPressInteractionState = new InteractionState();
     private XRController leftHandController;
+    [SerializeField] private GameObject MenuUI;
+    
     private void Start()
     {
         leftHandController = GetComponent<XRController>();
@@ -28,17 +28,17 @@ public class Lefthand : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        MenuTrigger(m_UIPressInteractionState);
-        Debug.Log(m_UIPressInteractionState.active);
+        UpdateInput();
     }
     void UpdateInput()
     {
         m_UIPressInteractionState.activatedThisFrame = m_UIPressInteractionState.deActivatedThisFrame = false;
+        MenuTrigger(ref m_UIPressInteractionState);
     }
-    void MenuTrigger(InteractionState interactionState)
+    void MenuTrigger(ref InteractionState interactionState)
     {
         bool ispressed = false;
-        leftHandController.inputDevice.IsPressed(InputHelpers.Button.SecondaryButton, out ispressed, -1f);
+        leftHandController.inputDevice.IsPressed(InputHelpers.Button.SecondaryButton, out ispressed, 0.1f);
 
         if(ispressed)
         {
@@ -46,17 +46,31 @@ public class Lefthand : MonoBehaviour
             {
                 interactionState.activatedThisFrame = true;
                 interactionState.active = true;
-                Debug.Log("¿€µø!");
+                
             }
         }
         else
         {
-            if (interactionState.active)
+            if(interactionState.active)
             {
-                interactionState.activatedThisFrame = true;
+                interactionState.deActivatedThisFrame = true;
                 interactionState.active = false;
-                
+                if(GameManager.instance.playerStatus != PlayerStatus.Search)
+                {
+                    GameManager.instance.playerStatus = PlayerStatus.Search;
+                    SetMenuUI(true);
+                }
+                else
+                {
+                    GameManager.instance.playerStatus = PlayerStatus.Idle;
+                    SetMenuUI(false);
+                }
+
             }
         }
+    }
+    void SetMenuUI(bool onoff)
+    {
+        MenuUI.SetActive(onoff);
     }
 }
