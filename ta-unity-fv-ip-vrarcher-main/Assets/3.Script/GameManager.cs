@@ -8,7 +8,9 @@ public enum PlayerStatus
     Battle,
     Search,
     Select,
-    Teleport
+    Teleport,
+    UI
+
 }
 
 public class GameManager : MonoBehaviour
@@ -16,6 +18,7 @@ public class GameManager : MonoBehaviour
     public static GameManager instance = null;
     [SerializeField] private GameObject RightSelect;
     [SerializeField] private GameObject RightTeleport;
+    [SerializeField] private GameObject RightUI;
     [SerializeField] private GameObject LeftHand;
     public PlayerStatus playerStatus = PlayerStatus.Search;
     private void Awake()
@@ -42,7 +45,7 @@ public class GameManager : MonoBehaviour
             RightTeleport.SetActive(true);
             RightSelect.SetActive(false);
         }
-        if (playerStatus == PlayerStatus.Idle)
+        if (playerStatus == PlayerStatus.Idle || playerStatus == PlayerStatus.Select)
         {
             RightTeleport.SetActive(false);
             RightSelect.SetActive(false);
