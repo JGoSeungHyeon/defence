@@ -55,9 +55,9 @@ public class Lefthand : MonoBehaviour
             {
                 interactionState.deActivatedThisFrame = true;
                 interactionState.active = false;
-                if(GameManager.instance.playerStatus != PlayerStatus.Search)
+                if(GameManager.instance.playerStatus != PlayerStatus.UI)
                 {
-                    GameManager.instance.playerStatus = PlayerStatus.Search;
+                    GameManager.instance.playerStatus = PlayerStatus.UI;
                     SetMenuUI(true);
                 }
                 else

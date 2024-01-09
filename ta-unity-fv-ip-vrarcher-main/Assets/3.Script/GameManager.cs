@@ -45,10 +45,16 @@ public class GameManager : MonoBehaviour
             RightTeleport.SetActive(true);
             RightSelect.SetActive(false);
         }
-        if (playerStatus == PlayerStatus.Idle || playerStatus == PlayerStatus.Select)
+        if (playerStatus == PlayerStatus.Idle)
         {
             RightTeleport.SetActive(false);
             RightSelect.SetActive(false);
+        }
+        if(playerStatus == PlayerStatus.UI)
+        {
+            RightTeleport.SetActive(false);
+            RightSelect.SetActive(false);
+            RightUI.SetActive(true);
         }
 
     }

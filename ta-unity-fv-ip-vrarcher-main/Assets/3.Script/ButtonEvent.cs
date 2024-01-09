@@ -4,8 +4,10 @@ using UnityEngine;
 
 public class ButtonEvent : MonoBehaviour
 {
-    public void Check()
+    [SerializeField] private GameObject HandMenu;
+    public void ExitMenu()
     {
-        Debug.Log("버튼 작동");
+        HandMenu.SetActive(false);
+        GameManager.instance.playerStatus = PlayerStatus.Idle;
     }
 }
