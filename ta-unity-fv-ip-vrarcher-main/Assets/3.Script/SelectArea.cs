@@ -31,7 +31,7 @@ public class SelectArea : MonoBehaviour
             outline.OutlineColor = Color.green;
             outline.enabled = true;
         }
-        else if (state == Status.Select)
+        else if (state == Status.Select && GameManager.instance.playerStatus == PlayerStatus.Select)
         {
             outline.OutlineColor = Color.red;
         }

@@ -21,6 +21,7 @@ public class Ray : XRRayInteractor
     }
     InteractionState m_UIPressInteractionState = new InteractionState();
     private XRController rightHandController;
+    [SerializeField] private GameObject CreateMenu;
     private new void Start()
     {
         rightHandController = GetComponent<XRController>();
@@ -97,8 +98,10 @@ public class Ray : XRRayInteractor
     }
     void SetBlockSelect()
     {
+        GameManager.instance.SeletedObject = CurrentObject;
         SelectArea selectArea = CurrentObject.GetComponent<SelectArea>();
         selectArea.SetStatusSelect();
         GameManager.instance.playerStatus = PlayerStatus.Select;
+        CreateMenu.SetActive(true);
     }
 }
