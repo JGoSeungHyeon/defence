@@ -39,7 +39,8 @@ public class Arrow : XRGrabInteractable
     {
         if (Physics.Linecast(lastPosition, tip.position, out RaycastHit hitInfo))
         {
-            if(hitInfo.transform.TryGetComponent(out Rigidbody body))
+            Debug.Log(hitInfo);
+            if (hitInfo.transform.TryGetComponent(out Rigidbody body))
             {
                 if (body.TryGetComponent<Lantern>(out Lantern lantern))
                     lantern.TurnOn();
@@ -58,6 +59,7 @@ public class Arrow : XRGrabInteractable
     }
     private void Stop()
     {
+        Debug.Log("작동");
         inAir = false;
         SetPhysics(false);
 
