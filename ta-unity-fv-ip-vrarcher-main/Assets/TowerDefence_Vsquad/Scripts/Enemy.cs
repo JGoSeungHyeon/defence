@@ -8,6 +8,7 @@ public class Enemy : MonoBehaviour {
     public GameObject Enemybug;
     public int Creature_Damage = 10;    
     public float Speed;
+    public int GiveMoney;
     // 
     public Transform[] waypoints;
     int curWaypointIndex = 0;
@@ -100,6 +101,7 @@ public class Enemy : MonoBehaviour {
         if (Enemy_Hp.EnemyHP <= 0)
         {
             Speed = 0;
+            GameManager.instance.MyMoney += GiveMoney;
             Destroy(gameObject, 5f);
             anim.SetBool("Death", true);            
         }

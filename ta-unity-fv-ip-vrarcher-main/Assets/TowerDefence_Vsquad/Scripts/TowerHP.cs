@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class TowerHP : MonoBehaviour {
-
+    public int MaxCastleHP = 20;
     public int CastleHp = 20;
 
     
