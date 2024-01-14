@@ -20,6 +20,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject RightTeleport;
     [SerializeField] private GameObject RightUI;
     [SerializeField] private GameObject LeftHand;
+    [SerializeField] private GameObject MainTowerObject; 
     public GameObject SeletedObject;
     public PlayerStatus playerStatus = PlayerStatus.Search;
     private void Awake()
