@@ -23,7 +23,7 @@ public class WaveSpawn : MonoBehaviour {
 
 	void Update()
 	{
-		if(WaveStart && enemyCount == MonsterPool.Count-1)
+		if(WaveStart && enemyCount == MonsterPool.Count-1)---
 		{
 			CancelInvoke("SpawnEnemy");
 			Wave++;
