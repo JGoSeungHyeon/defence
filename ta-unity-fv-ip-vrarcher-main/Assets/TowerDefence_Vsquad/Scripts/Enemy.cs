@@ -101,7 +101,6 @@ public class Enemy : MonoBehaviour {
         if (Enemy_Hp.EnemyHP <= 0)
         {
             Speed = 0;
-            GameManager.instance.MyMoney += GiveMoney;
             Destroy(gameObject, 5f);
             anim.SetBool("Death", true);            
         }
@@ -123,7 +122,11 @@ public class Enemy : MonoBehaviour {
 
 
     }
-       
-   
+    private void OnDestroy()
+    {
+        GameManager.instance.MyMoney += GiveMoney;
+        GameManager.instance.MonsterCount++;
+    }
+
 }
 

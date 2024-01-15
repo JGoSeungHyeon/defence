@@ -10062,6 +10062,7 @@ MonoBehaviour:
   speed: 15
   tip: {fileID: 7829741186962108687}
   sphereCollider: {fileID: 554311838281975191}
+  ArrowDamage: 100
   trailParticle: {fileID: 7770594767211711658}
   hitParticle: {fileID: 7047876726318400608}
   trailRenderer: {fileID: 5178078006398485163}

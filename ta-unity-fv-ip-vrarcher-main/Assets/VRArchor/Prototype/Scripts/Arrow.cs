@@ -10,6 +10,7 @@ public class Arrow : XRGrabInteractable
     Vector3 lastPosition = Vector3.zero;
     private Rigidbody rb;
     public Collider sphereCollider;
+    public int ArrowDamage = 20;
 
     [Header("Particles")]
     public ParticleSystem trailParticle;
@@ -19,7 +20,6 @@ public class Arrow : XRGrabInteractable
     [Header("Sound")]
     public AudioClip launchClip;
     public AudioClip hitClip;
-
     protected override void Awake()
     {
         base.Awake();
@@ -39,7 +39,14 @@ public class Arrow : XRGrabInteractable
     {
         if (Physics.Linecast(lastPosition, tip.position, out RaycastHit hitInfo))
         {
-            Debug.Log(hitInfo);
+            if(hitInfo.collider.gameObject.layer == 16)
+            {
+                return;
+            }
+            if (hitInfo.collider.tag == "enemyBug")
+            {
+                hitInfo.collider.gameObject.GetComponent<EnemyHp>().EnemyHP -= ArrowDamage;
+            }
             if (hitInfo.transform.TryGetComponent(out Rigidbody body))
             {
                 if (body.TryGetComponent<Lantern>(out Lantern lantern))
@@ -59,10 +66,8 @@ public class Arrow : XRGrabInteractable
     }
     private void Stop()
     {
-        Debug.Log("작동");
         inAir = false;
         SetPhysics(false);
-
         ArrowParticles(false);
        //ArrowSounds(hitClip, 1.5f, 2, .8f, -2);
     }

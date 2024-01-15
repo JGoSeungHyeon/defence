@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.32016882, g: 0.25871137, b: 0.36819202, a: 1}
+  m_IndirectSpecularColor: {r: 0.32016876, g: 0.2587119, b: 0.36817604, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -939,8 +939,10 @@ MonoBehaviour:
   RightTeleport: {fileID: 1837324665098109650}
   RightUI: {fileID: 6722867354024090980}
   LeftHand: {fileID: 1837324664321167629}
-  MainTowerObject: {fileID: 0}
+  towerhp: {fileID: 4086811571060933330}
+  MainHP: 0
   MyMoney: 0
+  MonsterCount: 0
   SeletedObject: {fileID: 0}
   playerStatus: 0
 --- !u!114 &102443711
@@ -970,6 +972,7 @@ MonoBehaviour:
   WayPoints:
   - {fileID: 4089072961946230464}
   MonsterPool: []
+  enemyCount: 0
 --- !u!1 &111878551
 GameObject:
   m_ObjectHideFlags: 0
@@ -31292,7 +31295,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &959893181
 RectTransform:
   m_ObjectHideFlags: 0
@@ -132311,7 +132314,7 @@ GameObject:
   - component: {fileID: 4086811571060933333}
   - component: {fileID: 4086811571060933332}
   - component: {fileID: 4086811571060933331}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: EL_castle_1 1
   m_TagString: Castle
   m_Icon: {fileID: 0}
@@ -157440,7 +157443,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5238485781557805326}
   m_LocalRotation: {x: -0, y: 0.43332082, z: -0, w: 0.90123975}
-  m_LocalPosition: {x: -2.4, y: 4.66, z: -2.17}
+  m_LocalPosition: {x: -2.923, y: 4.66, z: -3.234}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 576952750292164501}

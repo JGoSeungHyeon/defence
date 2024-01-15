@@ -20,8 +20,10 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject RightTeleport;
     [SerializeField] private GameObject RightUI;
     [SerializeField] private GameObject LeftHand;
-    [SerializeField] private GameObject MainTowerObject;
+    [SerializeField] private GameObject towerhp;
+    public float MainHP;
     public int MyMoney = 0;
+    public int MonsterCount = 0;
     public GameObject SeletedObject;
     public PlayerStatus playerStatus = PlayerStatus.Search;
     private void Awake()
@@ -35,6 +37,10 @@ public class GameManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
+    }
+    private void Start()
+    {
+        MainHP = towerhp.GetComponent<TowerHP>().CastleHp;
     }
     private void Update()
     {

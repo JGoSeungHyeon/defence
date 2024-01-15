@@ -12,7 +12,7 @@ public class WaveSpawn : MonoBehaviour {
 	public Transform[] WayPoints;
 	public List<GameObject> MonsterPool = new List<GameObject>();
 	private bool WaveStart = false;
-	int enemyCount=0;
+	public int enemyCount=0;
 
 	public void StartSpawn()
     {
@@ -23,7 +23,7 @@ public class WaveSpawn : MonoBehaviour {
 
 	void Update()
 	{
-		if(WaveStart && enemyCount == MonsterPool.Count-1)---
+		if(WaveStart && enemyCount == MonsterPool.Count-1)
 		{
 			CancelInvoke("SpawnEnemy");
 			Wave++;
@@ -40,7 +40,7 @@ public class WaveSpawn : MonoBehaviour {
     }
 	void EnemyInthePool()
     {
-		
+		WaveStart = true;
 		if (Wave <= 2)
 		{
 			for (int i = 0; i < 4; i++)
