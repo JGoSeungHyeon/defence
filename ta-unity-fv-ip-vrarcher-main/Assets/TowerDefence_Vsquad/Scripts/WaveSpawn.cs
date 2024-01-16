@@ -16,19 +16,22 @@ public class WaveSpawn : MonoBehaviour {
 
 	public void StartSpawn()
     {
-		
+
 		EnemyInthePool();
 		InvokeRepeating("SpawnEnemy", startTime, EnemyInterval);
 	}
 
 	void Update()
 	{
-		if(WaveStart && enemyCount == MonsterPool.Count-1)
+		updateUI();
+		if (WaveStart && enemyCount == MonsterPool.Count)
 		{
 			CancelInvoke("SpawnEnemy");
 			Wave++;
 			WaveStart = false;
+			GameManager.instance.playerStatus = PlayerStatus.Idle;
 		}
+
 	}
 
 	void SpawnEnemy()
@@ -40,6 +43,8 @@ public class WaveSpawn : MonoBehaviour {
     }
 	void EnemyInthePool()
     {
+		enemyCount = 0;
+		GameManager.instance.playerStatus = PlayerStatus.Battle;
 		WaveStart = true;
 		if (Wave <= 2)
 		{
@@ -50,13 +55,29 @@ public class WaveSpawn : MonoBehaviour {
 				MonsterPool.Add(clonedPrefab);
 			}
 		}
-		else if(Wave <= 4)
-        {
+		else if (Wave <= 4)
+		{
+			EnemyInterval = 3;
 			for (int i = 0; i < 2; i++)
 			{
-				GameObject clonedPrefab = Instantiate(MonsterPrefab[1]);
+				GameObject clonedPrefab = Instantiate(MonsterPrefab[0]);
 				MonsterPool.Add(clonedPrefab);
 			}
 		}
+		else if (Wave <= 6)
+		{
+			for (int i = 0; i < 2; i++)
+			{
+				GameObject clonedPrefab = Instantiate(MonsterPrefab[0]);
+				MonsterPool.Add(clonedPrefab);
+			}
+			EnemyInterval = 1;
+		}
+    }
+    void updateUI()
+    {
+		UIManager.instance.WaveText.text =  $"Wave : {Wave}";
+		UIManager.instance.KillMonsterText.text =  $"잡은 몬스터 수 : {GameManager.instance.MonsterCount}";
+		UIManager.instance.GoldText.text = $"{GameManager.instance.MyMoney}";
     }
 }

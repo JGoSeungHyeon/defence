@@ -22,7 +22,7 @@ public class SelectArea : MonoBehaviour
     }
     private void Update()
     {
-        if (state == Status.None)
+        if (state == Status.None || (GameManager.instance.playerStatus != PlayerStatus.Search && GameManager.instance.playerStatus != PlayerStatus.Select))
         {
             outline.enabled = false;
         }

@@ -78,7 +78,7 @@ public class Enemy : MonoBehaviour {
         // MOVING
 
         if (curWaypointIndex < waypoints.Length){
-	transform.position = Vector3.MoveTowards(transform.position,waypoints[curWaypointIndex].position,Time.deltaTime*Speed);
+	    transform.position = Vector3.MoveTowards(transform.position,waypoints[curWaypointIndex].position,Time.deltaTime*Speed);
             
             if (!EnemyTarget)
             {

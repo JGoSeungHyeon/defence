@@ -28,7 +28,14 @@ public class Lefthand : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        UpdateInput();
+        if (GameManager.instance.playerStatus != PlayerStatus.Battle)
+        {
+            UpdateInput();
+        }
+        if(GameManager.instance.playerStatus == PlayerStatus.Battle)
+        {
+            MenuUI.SetActive(false);
+        }
     }
     void UpdateInput()
     {

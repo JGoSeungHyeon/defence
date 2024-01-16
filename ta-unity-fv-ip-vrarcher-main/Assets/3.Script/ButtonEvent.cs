@@ -1,18 +1,20 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+[System.Serializable]
+public class TowerObject
+{
+    public GameObject TowerPrefab;
+    public int Money;
+}
 
 public class ButtonEvent : MonoBehaviour
 {
     [SerializeField] private GameObject HandMenu;
     [SerializeField] private GameObject AskMenu;
-    [SerializeField] private GameObject CrossbowTower;
-    [SerializeField] private GameObject DracoTower;
-    [SerializeField] private GameObject ElectricTower;
-    [SerializeField] private GameObject SplashTower;
-    [SerializeField] private GameObject BalistaTower;
-    [SerializeField] private GameObject SandglassTower;
     [SerializeField] private GameObject[] Page;
+    public TowerObject[] Tower_obj;
+    int CreatableMoney;
     private int currentIndex = 0;
     private void OnEnable()
     {
@@ -28,34 +30,16 @@ public class ButtonEvent : MonoBehaviour
     }
     public void CreateTower(int a)
     {
-        if(GameManager.instance.SeletedObject == null)
+        Debug.Log(Tower_obj[0].Money);
+        if(GameManager.instance.SeletedObject == null || GameManager.instance.MyMoney < Tower_obj[a].Money)
         {
             return;
         }
         GameObject createObject = null;
-        switch (a)
-        {
-
-            case 0 :
-                createObject = Instantiate(CrossbowTower, GameManager.instance.SeletedObject.transform);
-                break;
-            case 1:
-                createObject = Instantiate(DracoTower, GameManager.instance.SeletedObject.transform);
-                break;
-            case 2:
-                createObject = Instantiate(ElectricTower, GameManager.instance.SeletedObject.transform);
-                break;
-            case 3:
-                createObject = Instantiate(SplashTower, GameManager.instance.SeletedObject.transform);
-                break;
-            case 4:
-                createObject = Instantiate(BalistaTower, GameManager.instance.SeletedObject.transform);
-                break;
-            case 5:
-                createObject = Instantiate(SandglassTower, GameManager.instance.SeletedObject.transform);
-                break;
-        }
+        createObject = Instantiate(Tower_obj[a].TowerPrefab, GameManager.instance.SeletedObject.transform);
         createObject.transform.position = new Vector3(createObject.transform.position.x + 0.85f, createObject.transform.position.y + 1.82f, createObject.transform.position.z - 0.89f);
+        GameManager.instance.MyMoney -= Tower_obj[a].Money;
+        GameManager.instance.SeletedObject.layer = 15;
     }
     public void Previous_Page_btn()
     {

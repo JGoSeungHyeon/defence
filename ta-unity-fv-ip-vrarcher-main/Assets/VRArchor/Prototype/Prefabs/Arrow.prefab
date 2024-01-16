@@ -10059,7 +10059,7 @@ MonoBehaviour:
   m_ThrowAngularVelocityScale: 0.1
   m_GravityOnDetach: 0
   m_RetainTransformParent: 1
-  speed: 15
+  speed: 30
   tip: {fileID: 7829741186962108687}
   sphereCollider: {fileID: 554311838281975191}
   ArrowDamage: 100

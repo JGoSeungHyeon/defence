@@ -48,18 +48,21 @@ public class GameManager : MonoBehaviour
         {
             RightTeleport.SetActive(false);
             RightSelect.SetActive(true);
+            RightUI.SetActive(false);
         }
         if(playerStatus == PlayerStatus.Teleport && !RightTeleport.activeSelf)
         {
             RightTeleport.SetActive(true);
             RightSelect.SetActive(false);
+            RightUI.SetActive(false);
         }
-        if (playerStatus == PlayerStatus.Idle)
+        if(playerStatus == PlayerStatus.Idle || playerStatus == PlayerStatus.Battle)
         {
             RightTeleport.SetActive(false);
             RightSelect.SetActive(false);
+            RightUI.SetActive(false);
         }
-        if(playerStatus == PlayerStatus.UI)
+        if(playerStatus == PlayerStatus.UI || playerStatus == PlayerStatus.Select)
         {
             RightTeleport.SetActive(false);
             RightSelect.SetActive(false);
