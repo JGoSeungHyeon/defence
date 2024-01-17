@@ -515,6 +515,12 @@ MonoBehaviour:
   Enemy_Hp: {fileID: 0}
   target: {fileID: 0}
   EnemyTarget: {fileID: 0}
+  Hitsound:
+  - {fileID: 8300000, guid: b6ae43020e00abf45880eee0a187ba21, type: 3}
+  - {fileID: 8300000, guid: ef02ada4d28f1004a9d14c665735a582, type: 3}
+  DeathSound:
+  - {fileID: 8300000, guid: 06eff7b03c53a5d43925ac2819d1f83f, type: 3}
+  - {fileID: 8300000, guid: d8ce735a6581af846bcd3b6e5af2da2b, type: 3}
 --- !u!135 &135975656248482850
 SphereCollider:
   m_ObjectHideFlags: 0

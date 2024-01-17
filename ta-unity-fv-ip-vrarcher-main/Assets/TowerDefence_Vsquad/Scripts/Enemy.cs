@@ -17,13 +17,18 @@ public class Enemy : MonoBehaviour {
     public EnemyHp Enemy_Hp;
     public Transform target;
     public GameObject EnemyTarget;
+    //
+    public AudioClip[] Hitsound;
+    public AudioClip[] DeathSound;
+    public bool Death;
     
 
     void Start()
     {            
         anim = GetComponent<Animator>();
         Enemy_Hp = Enemybug.GetComponent<EnemyHp>();
-        previous_Speed = Speed;        
+        previous_Speed = Speed;
+        Death = false;
     }
 
     // Attack
@@ -62,7 +67,9 @@ public class Enemy : MonoBehaviour {
 
     void GetDamage ()
     {        
-            EnemyTarget.GetComponent<TowerHP>().Dmg_2(Creature_Damage);
+        EnemyTarget.GetComponent<TowerHP>().Dmg_2(Creature_Damage);
+        int rand = Random.Range(0, 2);
+        SoundManager.instance.PlaySFXSound(Hitsound[rand]);
     }
 
     
@@ -98,11 +105,14 @@ public class Enemy : MonoBehaviour {
 
         // DEATH
 
-        if (Enemy_Hp.EnemyHP <= 0)
+        if (Enemy_Hp.EnemyHP <= 0 && !Death)
         {
             Speed = 0;
             Destroy(gameObject, 5f);
-            anim.SetBool("Death", true);            
+            anim.SetBool("Death", true);
+            int rand = Random.Range(0, 2);
+            SoundManager.instance.PlaySFXSound(DeathSound[rand]);
+            Death = true;
         }
 
         // Attack to Run
@@ -126,6 +136,7 @@ public class Enemy : MonoBehaviour {
     {
         GameManager.instance.MyMoney += GiveMoney;
         GameManager.instance.MonsterCount++;
+        GameManager.instance.TotalKill++;
     }
 
 }

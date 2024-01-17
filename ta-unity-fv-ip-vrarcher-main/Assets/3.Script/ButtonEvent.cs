@@ -13,6 +13,8 @@ public class ButtonEvent : MonoBehaviour
     [SerializeField] private GameObject HandMenu;
     [SerializeField] private GameObject AskMenu;
     [SerializeField] private GameObject[] Page;
+    [SerializeField] private AudioClip buttonClip;
+    [SerializeField] private AudioClip CreateSound;
     public TowerObject[] Tower_obj;
     int CreatableMoney;
     private int currentIndex = 0;
@@ -39,6 +41,7 @@ public class ButtonEvent : MonoBehaviour
         createObject = Instantiate(Tower_obj[a].TowerPrefab, GameManager.instance.SeletedObject.transform);
         createObject.transform.position = new Vector3(createObject.transform.position.x + 0.85f, createObject.transform.position.y + 1.82f, createObject.transform.position.z - 0.89f);
         GameManager.instance.MyMoney -= Tower_obj[a].Money;
+        SoundManager.instance.PlaySFXSound(CreateSound);
         GameManager.instance.SeletedObject.layer = 15;
     }
     public void Previous_Page_btn()
@@ -58,5 +61,10 @@ public class ButtonEvent : MonoBehaviour
         GameManager.instance.playerStatus = PlayerStatus.Search;
         AskMenu.SetActive(true);
         gameObject.SetActive(false);
+    }
+    public void ButtonSFX()
+    {
+        Debug.Log("SFX½ÇÇà");
+        SoundManager.instance.PlaySFXSound(buttonClip);
     }
 }

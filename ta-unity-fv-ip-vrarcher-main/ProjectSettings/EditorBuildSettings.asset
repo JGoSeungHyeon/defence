@@ -6,14 +6,8 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/VRArchor/PrototypeScene.unity
-    guid: 17c436bc8a2fd824cbae5418c2151096
-  - enabled: 1
-    path: Assets/1.Scene/AndreTest.unity
-    guid: 404fb9f7b09bf9d41b2739cbedd0af34
-  - enabled: 1
-    path: Assets/VRArchor/VR Beginner/Scenes/Final/EscapeRoom.unity
-    guid: 0f290611f0f8be4419d06b71aba4e36a
+    path: Assets/1.Scene/Test Scene.unity
+    guid: bdb260d5e45bbaa4b896b1d2b20e591e
   m_configObjects:
     Unity.XR.Oculus.Settings: {fileID: 11400000, guid: 398d945149746a94899cafbfeddf8c9f,
       type: 2}

@@ -24,6 +24,7 @@ public class GameManager : MonoBehaviour
     public float MainHP;
     public int MyMoney = 0;
     public int MonsterCount = 0;
+    public int TotalKill = 0;
     public GameObject SeletedObject;
     public PlayerStatus playerStatus = PlayerStatus.Search;
     private void Awake()

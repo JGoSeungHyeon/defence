@@ -24,11 +24,15 @@ public class WaveSpawn : MonoBehaviour {
 	void Update()
 	{
 		updateUI();
-		if (WaveStart && enemyCount == MonsterPool.Count)
+		if (enemyCount == MonsterPool.Count)
 		{
 			CancelInvoke("SpawnEnemy");
+		}
+		if(GameManager.instance.MonsterCount == MonsterPool.Count && WaveStart)
+        {
 			Wave++;
 			WaveStart = false;
+			SoundManager.instance.BGMSetting(false);
 			GameManager.instance.playerStatus = PlayerStatus.Idle;
 		}
 
@@ -43,8 +47,10 @@ public class WaveSpawn : MonoBehaviour {
     }
 	void EnemyInthePool()
     {
+		SoundManager.instance.BGMSetting(true);
 		enemyCount = 0;
 		GameManager.instance.playerStatus = PlayerStatus.Battle;
+		GameManager.instance.MonsterCount = 0;
 		WaveStart = true;
 		if (Wave <= 2)
 		{
@@ -77,7 +83,7 @@ public class WaveSpawn : MonoBehaviour {
     void updateUI()
     {
 		UIManager.instance.WaveText.text =  $"Wave : {Wave}";
-		UIManager.instance.KillMonsterText.text =  $"잡은 몬스터 수 : {GameManager.instance.MonsterCount}";
+		UIManager.instance.KillMonsterText.text =  $"잡은 몬스터 수 : {GameManager.instance.TotalKill}";
 		UIManager.instance.GoldText.text = $"{GameManager.instance.MyMoney}";
     }
 }

@@ -38,6 +38,7 @@ public class Notch : XRSocketInteractor
     {
         if(interactable is Arrow arrow && arrow.selectingInteractor is HandInteractor hand)
         {
+            Debug.Log("작동");
             arrow.OnSelectExit(hand);
             hand.ForceDeinteract(arrow);
             pullInteraction.ForceInteract(hand);
